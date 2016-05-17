@@ -131,6 +131,24 @@
       return false;
     });
 
+    Hammer(this.$lightbox.get(0)).on('swipeleft', function () {
+      if (_this.currentImageIndex === _this.album.length - 1) {
+        _this.changeImage(0);
+      } else {
+        _this.changeImage(_this.currentImageIndex + 1);
+      }
+      return false;
+    });
+    
+    Hammer(this.$lightbox.get(0)).on('swiperight', function () {
+      if (_this.currentImageIndex === 0) {
+        _this.changeImage(_this.album.length - 1);
+      } else {
+        _this.changeImage(_this.currentImageIndex - 1);
+      }
+      return false;
+    });
+
     this.$lightbox.find('.lb-loader, .lb-close').on('click', function() {
       self.end();
       return false;
